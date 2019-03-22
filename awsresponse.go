@@ -66,14 +66,21 @@ type BrowseNode struct {
 	}
 }
 
+// Creator element in ItemAttributes
+type Creator struct {
+	Role  string `xml:"Role,attr"`
+	Value string `xml:",chardata"`
+}
+
 // ItemAttributes response group
 type ItemAttributes struct {
-	Author          string
+	Author          []string
 	Binding         string
 	Brand           string
 	Color           string
 	EAN             string
-	Creator         string
+	EISBN           string
+	Creator         []Creator
 	Title           string
 	ListPrice       Price
 	Manufacturer    string
@@ -83,6 +90,7 @@ type ItemAttributes struct {
 	Feature         []string
 	Model           string
 	ProductGroup    string
+	PublicationDate string
 	ReleaseDate     string
 	Studio          string
 	Warranty        string
@@ -92,11 +100,12 @@ type ItemAttributes struct {
 
 // Offer response attribute
 type Offer struct {
-	Condition       string `xml:"OfferAttributes>Condition"`
-	ID              string `xml:"OfferListing>OfferListingId"`
-	Price           Price  `xml:"OfferListing>Price"`
-	PercentageSaved uint   `xml:"OfferListing>PercentageSaved"`
-	Availability    string `xml:"OfferListing>Availability"`
+	Condition          string `xml:"OfferAttributes>Condition"`
+	ID                 string `xml:"OfferListing>OfferListingId"`
+	IsEligibleForPrime bool   `xml:"OfferListing>IsEligibleForPrime"`
+	Price              Price  `xml:"OfferListing>Price"`
+	PercentageSaved    uint   `xml:"OfferListing>PercentageSaved"`
+	Availability       string `xml:"OfferListing>Availability"`
 }
 
 // Offers response group
