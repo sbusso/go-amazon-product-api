@@ -38,6 +38,7 @@ type TopSeller struct {
 // Item represents a product returned by the API
 type Item struct {
 	ASIN             string
+	ParentASIN	 string
 	URL              string
 	DetailPageURL    string
 	ItemAttributes   *ItemAttributes
